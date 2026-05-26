@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, {useEffect, useState } from 'react'
+import api from '../api/axios';
 
 const AddNewCustomer = ({
     show,
@@ -29,7 +30,7 @@ const AddNewCustomer = ({
                 address: Custadd,
             };
 
-            const res = await axios.post("http://127.0.0.1:8000/customers/add/", CustomerData);
+            const res = await api.post('/customers/add/', CustomerData);
 
             console.log("Saved:", res.data);
             

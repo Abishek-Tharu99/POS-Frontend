@@ -1,7 +1,7 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
 import ReprintPreview from './ReprintPreview';
+import api from '../api/axios';
 
 
 const ReprintPopup = ({
@@ -18,7 +18,7 @@ const ReprintPopup = ({
 
     useEffect(() => {
         if (show) {
-            axios.get('http://127.0.0.1:8000/billing/bills/recent/')
+            api.get('/billing/bills/recent/')
                 .then(res => setBills(res.data));
         }
     }, [show]);
@@ -36,7 +36,7 @@ const ReprintPopup = ({
         }
 
         try {
-            const res = await axios.get(`http://127.0.0.1:8000/billing/bills/detail/${billNo}/`);
+            const res = await api.get(`/billing/bills/detail/${billNo}/`);
 
             const reprint_billData = res.data;
 
