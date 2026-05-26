@@ -3,13 +3,19 @@ import api from '../api/axios';
 
 const ViewData = () => {
 
+    const [username, setUsername] = useState("abishek");
+    const [year, setYear] = useState("2026");
+    const [number, setNumber] = useState("");
+
     const [sessionId, setSessionId] = useState("");
     const [billData, setBillData] = useState(null);
     const [error, setError] = useState("");
-
+    
     const getBill = async () => {
         try {
             setError("");
+
+            const sessionId = `${username}-${year}-${number}`;
 
             const res = await api.get(
                 `/api/bill/${sessionId}/`
@@ -27,7 +33,34 @@ const ViewData = () => {
         <div className='p-4'>
 
             <div className='d-flex align-items-center'>
-                <input className='fs-4' type="text" onChange={(e) => setSessionId(e.target.value)}/>
+                {/* Username */}
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
+                    className='form-control'
+                />
+
+                {/* Year */}
+                <input
+                    type="text"
+                    value={year}
+                    onChange={(e) => setYear(e.target.value)}
+                    placeholder="Year"
+                    className='form-control'
+                />
+
+                {/* Session Number */}
+                <input
+                    type="text"
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
+                    placeholder="00001"
+                    className='form-control'
+                />
+
+
                 <button className='m-auto btn btn-primary' onClick={getBill}>Search</button>
             </div>
 
