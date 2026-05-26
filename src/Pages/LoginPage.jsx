@@ -64,9 +64,9 @@ const LoginPage = ({
                     password: formData.password,
                 });
 
-                console.log("LOGIN RESPONSE:", response.data);
+                //console.log("LOGIN RESPONSE:", response.data);
 
-                console.log(response.data.message);
+                //console.log(response.data.message);
 
                 // ⚠️ Check before storing
                 if (response.data.user) {
