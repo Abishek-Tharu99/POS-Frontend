@@ -88,7 +88,10 @@ const App = () => {
     <>
       <main className='wrap d-flex flex-column flex-lg-row my-3'>
         <div className='col-12 col-md-12 col-lg-4'>
+          <input type="text" readOnly className='w-auto text-center' value={sessionData.session_id}></input>
           <div className='d-flex align-items-center gap-2 ms-3 mt-3'>
+            
+
             <h5 className='mb-0'>1000 x</h5>
             <input type="number" className='w-auto' value={quantity1000} onChange={(e) => setQuantity1000(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
             <h5 className='mb-0'>=</h5>
