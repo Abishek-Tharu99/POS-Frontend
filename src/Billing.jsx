@@ -209,7 +209,7 @@ const Billing = () => {
       localStorage.setItem("holdData", JSON.stringify(updated));
       return updated;
     });
-    console.log(newHold);
+    //console.log(newHold);
     // clear current bill
     clearBill();
 
@@ -289,11 +289,11 @@ const Billing = () => {
 
   const handleGoToPayment = () => {
 
-    console.log({
-      netAmount,
-      totalDiscount,
-      finalAmount
-    });
+    //console.log({
+    //  netAmount,
+    //  totalDiscount,
+    //  finalAmount
+    //});
 
     try {
       localStorage.setItem("finalAmount", finalAmount);
@@ -557,7 +557,7 @@ const Billing = () => {
         localStorage.getItem("sessionData")
       );
 
-      console.log("Ending session with data:", sessionData);
+      //console.log("Ending session with data:", sessionData);
 
       navigate("/end_session", { state: { sessionData } });
 
@@ -638,7 +638,7 @@ const Billing = () => {
                           return;
                         }
 
-                        console.log("Tagged:", SelectCustomer);
+                        //console.log("Tagged:", SelectCustomer);
                         setTagedCustomer(SelectCustomer);
                         setShowTagCustomer(false);
                       }}

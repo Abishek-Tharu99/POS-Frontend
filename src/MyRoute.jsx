@@ -27,6 +27,7 @@ const MyRoute = () => {
         />
         <Route path="/reprint-preview" element={<ReprintPreview />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/about" element={<AboutUs />} />
         
 
 
