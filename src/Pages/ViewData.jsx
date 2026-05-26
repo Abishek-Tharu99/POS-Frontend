@@ -3,7 +3,7 @@ import api from '../api/axios';
 
 const ViewData = () => {
 
-    const [searchDate, setSearchDate] = useState("");
+    const [sessionId, setSessionId] = useState("");
     const [billData, setBillData] = useState(null);
     const [error, setError] = useState("");
 
@@ -12,7 +12,7 @@ const ViewData = () => {
             setError("");
 
             const res = await api.get(
-                `/api/bill/${searchDate}/`
+                `/api/bill/${sessionId}/`
             );
 
             setBillData(res.data);
@@ -27,7 +27,7 @@ const ViewData = () => {
         <div className='p-4'>
 
             <div className='d-flex align-items-center'>
-                <input className='fs-4' type="date" onChange={(e) => setSearchDate(e.target.value)}/>
+                <input className='fs-4' type="text" onChange={(e) => setSessionId(e.target.value)}/>
                 <button className='m-auto btn btn-primary' onClick={getBill}>Search</button>
             </div>
 
