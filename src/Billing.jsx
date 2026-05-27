@@ -425,12 +425,11 @@ const Billing = () => {
         e.preventDefault();
         setDiscountItem(null);   // 🔥 IMPORTANT
         setDiscountPopup(true);
-        setDiscountPopup(false);
-        setshowHoldPanel(false);
+        setShowHoldPanel(false);
         setShowTagCustomer(false);
         setReprint_popup(false);
-        setShowAddCustomer(false);
-        setshowQtyPopup(false);
+       
+  
       }
 
       if (e.key == 'F2') {
@@ -440,7 +439,6 @@ const Billing = () => {
         handleSearchCustomer("");
         setReprint_popup(false);
         setShowAddCustomer(false);
-        setshowQtyPopup(false);
       }
 
       if (e.key === 'Escape') {
@@ -451,6 +449,7 @@ const Billing = () => {
         setShowTagCustomer(false);
         setShowAddCustomer(false);
         setSelectedHold(null);
+        setQtyPopup(false);
         setTimeout(() => {
           inputRef.current?.focus();
         }, 0);
@@ -498,7 +497,6 @@ const Billing = () => {
         e.preventDefault();
         setReprint_popup(true);
         setShowAddCustomer(false);
-        setshowQtyPopup(false);
       }
 
 
