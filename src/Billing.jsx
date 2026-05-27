@@ -526,9 +526,16 @@ const Billing = () => {
     const init = async () => {
       try {
         const session_id = await startsession();
+        if (!session_id) {
+          console.log("No session ID received, aborting init");
+          return;
+        }
+        console.log("Received session ID:", session_id);
 
-        const existingSession = localStorage.getItem("sessionData");
+        const existingSession = JSON.parse(localStorage.getItem("sessionData"));
+        console.log("Existing session data:", existingSession);
 
+        
         if (!existingSession) {
           const newSession = {
             session_id: session_id,
