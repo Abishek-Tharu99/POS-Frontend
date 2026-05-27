@@ -74,7 +74,7 @@ const Billing = () => {
   /*search function*/
 
   const [items, setItems] = useState([]);
-  const [SelectedItem, setSelectedItem] = useState([]);
+  const [SelectedItem, setSelectedItem] = useState(null);
   const [query, setQuery] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [DiscountPopup, setDiscountPopup] = useState(false);
