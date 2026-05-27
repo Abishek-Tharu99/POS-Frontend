@@ -515,7 +515,7 @@ const Billing = () => {
       try {
         const res = await tokenapi.post("/session/start/");
         console.log("Session started");
-        console.log("Session start response:", res.data.session_id);
+        console.log("Session start response:", res.data);
         return res.data.session_id;
       } catch (err) {
         console.log("Failed to start session:", err);
