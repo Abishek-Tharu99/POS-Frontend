@@ -515,6 +515,7 @@ const Billing = () => {
       try {
         const res = await tokenapi.post("/session/start/");
         console.log("Session started");
+        console.log("Session start response:", res.data.session_id);
         return res.data.session_id;
       } catch (err) {
         console.log("Failed to start session:", err);
@@ -535,7 +536,6 @@ const Billing = () => {
         const existingSession = JSON.parse(localStorage.getItem("sessionData"));
         console.log("Existing session data:", existingSession);
 
-        
         if (!existingSession) {
           const newSession = {
             session_id: session_id,
@@ -585,6 +585,7 @@ const Billing = () => {
     }
 
   };
+  
 
   return (
     <>

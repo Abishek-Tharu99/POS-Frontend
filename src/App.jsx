@@ -13,7 +13,7 @@ const App = () => {
     await api.post("/api/save/", {
       date: new Date().toISOString().split("T")[0],
       opening_balance: value_ob,
-      cash_sales,
+      //cash_sales,
       pos: value_pos,
       fonepay: value_fp,
       credit: value_cr,
@@ -25,15 +25,14 @@ const App = () => {
       closing_balance: sum_result,
     });
 
-    const data = {
+    // 🔥 THIS IS MISSING IN YOUR CODE
+    await api.post("/session/end/", {
       session_id: sessionData.session_id,
-      end_time: new Date().toISOString(),
       total_sales: value_ts,
-      fonepay: sessionData.fonepay || 0,
-      pos: sessionData.pos || 0,
-      credit: sessionData.credit || 0,
-      cash_sales: sessionData.cash_sales || 0,
-    };
+      fonepay: value_fp,
+      pos: value_pos,
+      credit: value_cr,
+    });
 
     //console.log(data);
 
