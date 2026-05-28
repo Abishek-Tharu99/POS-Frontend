@@ -8,6 +8,7 @@ const App = () => {
   const navigate = useNavigate();
 
   const sessionData = JSON.parse(localStorage.getItem("sessionData")) || {};
+  console.log("Session Data in App.jsx:", sessionData);
 
   const saveBill = async () => {
     await api.post("/api/save/", {
