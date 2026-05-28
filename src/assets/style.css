@@ -1505,11 +1505,21 @@ footer ul li a:hover {
     justify-content:center;
     align-items: center;
     padding: 5px;
+    gap: 10px;
 }
 .end_session_btn{
     width: 150px;
     height: 50px;
-    background-color: #b21919;
+    background-color: #1358d8;
+    color: white;
+    font-size: medium;
+    font-weight: bolder;
+    border-radius: 15px;
+}
+.log-out_btn{
+    width: 150px;
+    height: 50px;
+    background-color: #d40e0e;
     color: white;
     font-size: medium;
     font-weight: bolder;

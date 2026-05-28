@@ -562,6 +562,10 @@ const Billing = () => {
     navigate("/viewdata");
   };
 
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
 
   const handleEndSession = async () => {
 
@@ -839,6 +843,10 @@ const Billing = () => {
 
             <button className="end_session_btn" onClick={viewdata}>
               View Daata
+            </button>
+
+            <button className="log-out_btn" onClick={logout}>
+              Log Out
             </button>
 
 
