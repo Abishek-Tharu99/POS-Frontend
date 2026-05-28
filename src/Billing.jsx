@@ -842,7 +842,7 @@ const Billing = () => {
             </button>
 
             <button className="end_session_btn" onClick={viewdata}>
-              View Daata
+              View Data
             </button>
 
             <button className="log-out_btn" onClick={logout}>

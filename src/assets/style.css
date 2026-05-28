@@ -118,6 +118,7 @@ footer ul li a:hover {
 }
 
 
+
 .search_pannel {
     border: 2px solid rgb(35, 34, 34);
     margin: 5px;
@@ -455,7 +456,19 @@ footer ul li a:hover {
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    gap: 50px;
+    gap: 10px;
+}
+
+@media (max-width:1036px){
+    .manipulatebtn{
+        gap: 5px;
+    }
+    .manipulatebtn button{
+        font-size: 20px;
+        width: 80px;
+        height: 30px;
+        overflow: scroll;
+    }
 }
 
 .manipulatebtn button {
@@ -1304,8 +1317,10 @@ footer ul li a:hover {
 .shortcut {
     display: flex;
     flex-wrap: wrap;
+    content:wrap;
     justify-content: space-between;
     padding: 3px;
+    overflow: scroll;
 }
 
 .shortcut h2 {
@@ -1498,6 +1513,7 @@ footer ul li a:hover {
     display: flex;
     padding: 5px;
     gap: 0px;
+    overflow: scroll;
 
 }
 .end_btn{
@@ -1506,6 +1522,18 @@ footer ul li a:hover {
     align-items: center;
     padding: 5px;
     gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .end_btn {
+        flex-direction: column;
+        gap: 5px;
+        overflow: scroll;
+    }
+    .end_session_btn, .log-out_btn {
+        width: 50px;   
+    }
+    
 }
 .end_session_btn{
     width: 150px;
@@ -1949,4 +1977,16 @@ footer ul li a:hover {
     font-weight: bolder;
     border-radius: 10px;
     background-color: #29b0f8;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .custom-col {
+    width: 50%;
+  }
+}
+
+@media (min-width: 1025px) {
+  .custom-col {
+    width: 33.33%;
+  }
 }

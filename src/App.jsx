@@ -86,8 +86,8 @@ const App = () => {
 
   return (
     <>
-      <main className='wrap d-flex flex-column flex-lg-row my-3'>
-        <div className='col-12 col-md-12 col-lg-4'>
+      <main className='end wrap d-flex flex-column flex-lg-row my-3'>
+        <div className='custom-col col-12 '>
           <input type="text" readOnly className='w-auto text-center' value={sessionData.session_id}></input>
           <div className='d-flex align-items-center gap-2 ms-3 mt-3'>
             
@@ -158,7 +158,7 @@ const App = () => {
         </div>
 
 
-        <div className='col-12 col-md-12 col-lg-4'>
+        <div className='custom-col col-12 '>
 
           <div className='d-flex align-items-center'>
 
@@ -260,7 +260,7 @@ const App = () => {
 
         </div>
 
-        <div className='col-12 col-md-12 col-lg-4'>
+        <div className='custom-col col-12 '>
           <div className='d-flex align-items-center'>
             <h3>Deposited in Bank</h3>
             <div className='m-3'>
