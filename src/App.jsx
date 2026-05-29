@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import api from './api/axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import tokenapi from './api/tokenApi';
+import tokenapi from './api/jwtapi';
 
 
 const App = () => {
