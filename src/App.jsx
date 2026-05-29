@@ -8,7 +8,7 @@ const App = () => {
 
 
   const navigate = useNavigate();
-  const sessionData = JSON.parse(localStorage.getItem("sessionData")) || "{}";
+  const sessionData = JSON.parse(localStorage.getItem("sessionData")) || {};
   // console.log("Session Data in App.jsx:", sessionData);
 
   const saveBill = async () => {
@@ -31,7 +31,7 @@ const App = () => {
       console.log(res.data);
 
       // 🔥 THIS IS MISSING IN YOUR CODE
-      const sessionEndRes = await api.post("/session/end/", {
+      const sessionEndRes = await tokenapi.post("/session/end/", {
         session_id: sessionData.session_id,
         total_sales: value_ts,
         fonepay: value_fp,
@@ -93,7 +93,7 @@ const App = () => {
     const total_cash_sales = cash_sales + value_ob;
     const net_cash = total_cash_sales - value_exp - value_de_bank - value_gto;
     const ex_le = sum_result - net_cash;
-
+    const [cash_sales, setCashSales] = useState(cash_sales);
 
     return (
       <>
@@ -186,7 +186,9 @@ const App = () => {
               <h3>Cash Sales</h3>
 
               <div className='m-3'>
-                <input type='number' readOnly value={cash_sales}></input>
+                <input type='number'  
+                value={cash_sales}
+                onChange={(e) => setCashSales(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
               </div>
 
             </div>
@@ -226,7 +228,9 @@ const App = () => {
               <h3>Total sales</h3>
 
               <div className='m-3'>
-                <input type='number' value={value_ts} readOnly></input>
+                <input type='number' 
+                value={value_ts} 
+                onChange={(e) => setValue_ts(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
               </div>
 
               {/* <div className='m-3'>

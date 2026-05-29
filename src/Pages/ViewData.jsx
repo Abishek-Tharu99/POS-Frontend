@@ -26,7 +26,7 @@ const ViewData = () => {
 
             const sessionId = `${username}-${year}-${number}`;
 
-            const res = await tokenapi.get(
+            const res = await api.get(
                 `/api/bill/${sessionId}/`
             );
 
