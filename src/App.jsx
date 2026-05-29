@@ -14,7 +14,7 @@ const App = () => {
   const saveBill = async () => {
     try {
         const res = await api.post("/api/save/", {
-        date: new Date().toISOString().split("T")[0],
+        session_id: sessionData.session_id,
         opening_balance: value_ob,
         cash_sales: cash_sales,
         pos: value_pos,
