@@ -89,11 +89,12 @@ const App = () => {
 
     const sum_result = result1000 + result500 + result100 + result50 + result20 + result10 + result5 + result_ic;
     const other_sales_sum = value_cr + value_fp + value_pos;
-    const cash_sales = value_ts - other_sales_sum;
-    const total_cash_sales = cash_sales + value_ob;
+    const cs = value_ts - other_sales_sum;
+    const total_cash_sales = cs + value_ob;
     const net_cash = total_cash_sales - value_exp - value_de_bank - value_gto;
     const ex_le = sum_result - net_cash;
-    const [cash_sales, setCashSales] = useState(cash_sales);
+
+    const [cash_sales, setCashSales] = useState(cs);
 
     return (
       <>
