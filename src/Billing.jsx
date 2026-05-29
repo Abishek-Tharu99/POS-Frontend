@@ -514,7 +514,8 @@ const Billing = () => {
     const startsession = async () => {
       try {
         const res = await tokenapi.post("/session/start/");
-        return res.data.session_id;
+        //return res.data.session_id;
+        return res.data;
       } catch (err) {
         console.log("Failed to start session:", err);
       } finally {
@@ -524,9 +525,9 @@ const Billing = () => {
 
     const init = async () => {
       try {
-        const session_id = await startsession();
-
-        if (!session_id) {
+        const session_Data = await startsession();
+        
+        if (!session_Data.session_id) {
           console.log("No session ID received, aborting init");
           return;
         }
@@ -536,7 +537,8 @@ const Billing = () => {
 
         if (!existingSession) {
           const newSession = {
-            session_id: session_id,
+            session_id: session_Data.session_id,
+            username: session_Data.username,
             total_sales: 0,
             cash_sales: 0,
             fonepay_sales: 0,

@@ -2,15 +2,23 @@ import { useState } from 'react'
 import api from '../api/axios';
 
 const ViewData = () => {
+    const sessionData = JSON.parse(localStorage.getItem("sessionData")) || "{}";
+    const [username, setUsername] = useState(sessionData.username || "");
 
-    const [username, setUsername] = useState("abishek");
-    const [year, setYear] = useState("2026");
+    const today = new Date();
+
+    const formattedDate =
+        today.getFullYear().toString() +
+        String(today.getMonth() + 1).padStart(2, "0") +
+        String(today.getDate()).padStart(2, "0");
+
+    const [year, setYear] = useState(formattedDate);
     const [number, setNumber] = useState("");
 
     const [sessionId, setSessionId] = useState("");
     const [billData, setBillData] = useState(null);
     const [error, setError] = useState("");
-    
+
     const getBill = async () => {
         try {
             setError("");
