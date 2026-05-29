@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import api from '../api/axios';
+import tokenapi from '../api/jwtapi';
 
 const ViewData = () => {
     const sessionData = JSON.parse(localStorage.getItem("sessionData")) || "{}";
@@ -25,7 +26,7 @@ const ViewData = () => {
 
             const sessionId = `${username}-${year}-${number}`;
 
-            const res = await api.get(
+            const res = await tokenapi.get(
                 `/api/bill/${sessionId}/`
             );
 
