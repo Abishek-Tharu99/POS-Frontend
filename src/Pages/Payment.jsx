@@ -182,10 +182,10 @@ const Payment = () => {
                 billType: billType,
                 items: cart,
                 discount: discount,
-                customer_name: selectedCustomerData?.name || null,
-                customer_no: selectedCustomerData?.mobile_no || null,
-                customer_pan: selectedCustomerData?.pan_no || null,
-                customer_addr: selectedCustomerData?.address || null,
+                customer_name: selectedCustomerData?.name || "",
+                customer_no: selectedCustomerData?.mobile_no || "",
+                customer_pan: selectedCustomerData?.pan_no || "",
+                customer_addr: selectedCustomerData?.address || "",
 
                 payments: payments.map(p => ({
                     method: p.method,
