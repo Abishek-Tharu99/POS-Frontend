@@ -6,6 +6,9 @@ import QrPopup from './QrPopup';
 import ReprintPreview from '../Components/ReprintPreview';
 import api from '../api/axios';
 import logo from '../assets/Abishek_logo.png'
+import tokenapi from '../api/jwtapi';
+
+
 const Payment = () => {
 
     const location = useLocation();
@@ -193,7 +196,7 @@ const Payment = () => {
             console.log(billData);
 
             // 🔥 API CALL
-            const response = await api.post(
+            const response = await tokenapi.post(
                 "/billing/save/",
                 billData
             );
