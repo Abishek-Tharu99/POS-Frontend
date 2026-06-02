@@ -63,7 +63,7 @@ const LoginPage = ({
                     username: formData.username,
                     password: formData.password,
                 });
-
+                console.log("Login Response:", response.data);
                 // ⚠️ Check before storing
                 if (response.data.user) {
                     localStorage.setItem("user", JSON.stringify(response.data.user));
