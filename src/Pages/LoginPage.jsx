@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import axios from 'axios'
 import api from '../api/axios';
 import { useNavigate } from "react-router-dom";
-import Billing from '../Billing';
+
 
 const LoginPage = ({
     show,
     onClose,
 }) => {
     const navigate = useNavigate();
-
+    const [loading, setLoading] = useState(false);
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -55,6 +54,7 @@ const LoginPage = ({
 
         e.preventDefault();
 
+        setLoading(true);
         if (validateForm()) {
 
             try {
@@ -64,38 +64,43 @@ const LoginPage = ({
                     password: formData.password,
                 });
 
-                //console.log("LOGIN RESPONSE:", response.data);
-
-                //console.log(response.data.message);
-
                 // ⚠️ Check before storing
                 if (response.data.user) {
                     localStorage.setItem("user", JSON.stringify(response.data.user));
                 }
 
+                localStorage.setItem("user", JSON.stringify(response.data.user));
                 localStorage.setItem("access", response.data.access);
                 localStorage.setItem("refresh", response.data.refresh);
+                localStorage.setItem("shops", JSON.stringify(response.data.shops || []));
+                
+
+                if (response.data.active_shop) {
+                    localStorage.setItem
+                    ("active_shop", JSON.stringify(response.data.active_shop));
+                }
 
                 setFormData({
                     username: '',
                     password: '',
                 });
-
                 setErrors({});
+
+
 
                 onClose();
                 navigate("/billing");
 
             } catch (error) {
 
-                console.log("LOGIN ERROR:", error);
-
                 alert(
                     error.response?.data?.message ||
                     "Server Error"
                 );
+            }finally {
+                setLoading(false);  
             }
-        }
+        };
     };
     return (
         <>
@@ -173,7 +178,7 @@ const LoginPage = ({
                             type='submit'
                             className='login_btn'
                         >
-                            Login
+                            {loading ? "Logging in..." : "Log In"}
                         </button>
 
                     </form>
@@ -183,6 +188,6 @@ const LoginPage = ({
             </div>
         </>
     )
-}
 
-export default LoginPage
+}
+export default LoginPage;

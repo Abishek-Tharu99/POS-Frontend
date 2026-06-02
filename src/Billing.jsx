@@ -88,7 +88,7 @@ const Billing = () => {
     setQuery(value);
 
     try {
-      const res = await api.get(
+      const res = await tokenapi.get(
         `/billing/items/?search=${value}`
       );
 
@@ -119,7 +119,7 @@ const Billing = () => {
     setSearchCustomer(value);
 
     try {
-      const res = await api.get(`/customers/customers/?customer=${value}`)
+      const res = await tokenapi.get(`/customers/customers/?customer=${value}`)
 
       setCustomers(res.data);
 
@@ -137,6 +137,8 @@ const Billing = () => {
         setBillNo(res.data.bill_no);
       } catch (err) {
         console.error(err);
+        console.log(err.response?.data);
+        console.log(err);
       } finally {
         setLoadingBill(false);
       }
@@ -375,7 +377,6 @@ const Billing = () => {
     );
   };
 
-
   const changeRate = (item) => {
     if (SelectedItem?.code !== item.code) return;
 
@@ -508,7 +509,7 @@ const Billing = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [finalAmount, netAmount, totalDiscount, billType, cart, BillNo, TagedCustomer]);
 
-
+  const activeShop = JSON.parse(localStorage.getItem("active_shop"));
 
   useEffect(() => {
     const startsession = async () => {

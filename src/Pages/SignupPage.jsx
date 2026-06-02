@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import api from '../api/axios';
 
 const SignupPage = ({
@@ -11,6 +11,8 @@ const SignupPage = ({
         email: '',
         password: '',
         confirmPassword: '',
+       
+
     });
     const [loading, setLoading] = useState(false);
     const [errors, setErrors] = useState({});
@@ -18,6 +20,7 @@ const SignupPage = ({
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
     if (!show) return null;
+
 
     // Handle Input Change
     const handleChange = (e) => {
@@ -86,6 +89,7 @@ const SignupPage = ({
                         username: formData.username,
                         email: formData.email,
                         password: formData.password,
+                        
                     }
                 );
 
@@ -99,6 +103,7 @@ const SignupPage = ({
                     email: '',
                     password: '',
                     confirmPassword: '',
+    
                 });
 
                 setErrors({});
@@ -241,16 +246,8 @@ const SignupPage = ({
                                 {errors.confirmPassword}
                             </p>
                         )}
-                        {/* <button
-                            type='button'
-                            className='already_account_btn'
-                            onClick={() => {
-                                onClose();
-                                setShowLogin(true);
-                            }}
-                        >
-                            Already have an account? Login
-                        </button> */}
+
+                        
 
                         <button
                             type='submit'

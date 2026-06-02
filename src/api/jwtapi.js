@@ -29,9 +29,14 @@ const processQueue = (error, token = null) => {
 tokenapi.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem("access");
+        const shopId = localStorage.getItem("shop_id");
 
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
+        }
+
+        if (shopId) {
+            config.headers["X-SHOP-ID"] = shopId;
         }
 
         return config;
