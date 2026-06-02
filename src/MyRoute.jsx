@@ -29,8 +29,6 @@ const MyRoute = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/about" element={<AboutUs />} />
         
-
-
       </Routes>
 
 

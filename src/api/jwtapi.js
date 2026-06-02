@@ -35,8 +35,9 @@ tokenapi.interceptors.request.use(
             config.headers.Authorization = `Bearer ${token}`;
         }
 
+
         if (shopId) {
-            config.headers["X-SHOP-ID"] = shopId;
+            config.headers["X-SHOP-ID"] = String(shopId);
         }
 
         return config;
@@ -97,12 +98,16 @@ tokenapi.interceptors.response.use(
                 throw new Error("No refresh token");
             }
 
-            const res = await axios.post(
-                `${import.meta.env.VITE_API_URL}/api/token/refresh/`,
-                {
-                    refresh: refreshToken,
-                }
-            );
+            // const res = await axios.post(
+            //     `${import.meta.env.VITE_API_URL}/api/token/refresh/`,
+            //     {
+            //         refresh: refreshToken,
+            //     }
+            // );
+
+            const res = await tokenapi.post("/api/token/refresh/", {
+                refresh: refreshToken,
+            });
 
             const newToken = res.data.access;
 
@@ -132,12 +137,22 @@ tokenapi.interceptors.response.use(
 // -------------------------
 // GLOBAL LOGOUT
 // -------------------------
+// function logout() {
+//     localStorage.removeItem("access");
+//     localStorage.removeItem("refresh");
+//     localStorage.removeItem("user");
+
+//     window.location.href = "/";
+// }
 function logout() {
+    isRefreshing = false;
+    failedQueue = [];
+
     localStorage.removeItem("access");
     localStorage.removeItem("refresh");
     localStorage.removeItem("user");
+    localStorage.removeItem("shop_id");
 
     window.location.href = "/";
 }
-
 export default tokenapi;
