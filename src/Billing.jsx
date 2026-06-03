@@ -1,4 +1,5 @@
 import api from './api/axios';
+import tokenapi from './api/jwtapi';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from "react-router-dom";
 import SearchPopup from './Components/SearchPopup';
@@ -7,7 +8,6 @@ import Payment from './Pages/Payment';
 import ReprintPopup from './Components/ReprintPopup';
 import AddNewCustomer from './Components/AddNewCustomer';
 import logo from './assets/Abishek_logo.png'
-import tokenapi from './api/jwtapi';
 import QtyChange from './Components/QtyChange';
 
 const Billing = () => {
