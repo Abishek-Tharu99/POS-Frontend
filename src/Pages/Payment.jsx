@@ -176,8 +176,8 @@ const Payment = () => {
             alert("Please settle full payment before saving the bill!");
             return;
         }
-        try {
 
+        try {
             const billData = {
                 billType: billType,
                 items: cart,
@@ -284,7 +284,7 @@ const Payment = () => {
         const fetchCustomers = async () => {
             try {
 
-                const res = await api.get(
+                const res = await tokenapi.get(
                     "/customers/customers/"
                 );
 

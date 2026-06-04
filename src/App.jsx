@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState,useEffect } from 'react'
-import api from './api/axios';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import tokenapi from './api/jwtapi';
 
@@ -14,7 +13,7 @@ const App = () => {
 
   const saveBill = async () => {
     try {
-      const res = await api.post("/api/save/", {
+      const res = await tokenapi.post("/api/save/", {
         session_id: sessionData.session_id,
         opening_balance: value_ob,
         cash_sales: cash_sales,
@@ -199,9 +198,10 @@ const App = () => {
               <input
                 type="number"
                 value={cash_sales}
+                readOnly={!manualCashSales}
                 onChange={(e) => {
                   setManualCashSales(true);
-                  setCashSales(Number(e.target.value || 0));
+                  setCashSales(Number(e.target.value));
                 }}
               />
             </div>
@@ -213,7 +213,10 @@ const App = () => {
             <h3>POS</h3>
 
             <div className='m-3'>
-              <input type='number' onChange={(e) => setValue_pos(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
+              <input type='number' 
+              onChange={(e) =>{
+                setValue_pos(Number(e.target.value || 0));
+              }}></input>
             </div>
 
           </div>
@@ -223,7 +226,10 @@ const App = () => {
             <h3>Fonepay</h3>
 
             <div className='m-3'>
-              <input type='number' onChange={(e) => setValue_fp(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
+              <input type='number' 
+              onChange={(e) => {
+                setValue_fp(Number(e.target.value || 0));
+              }}></input>
             </div>
 
           </div>
@@ -233,7 +239,10 @@ const App = () => {
             <h3>Credit</h3>
 
             <div className='m-3'>
-              <input type='number' onChange={(e) => setValue_cr(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
+              <input type='number' 
+              onChange={(e) => {
+                setValue_cr(Number(e.target.value || 0));
+              }}></input>
             </div>
 
           </div>

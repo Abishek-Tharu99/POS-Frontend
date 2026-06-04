@@ -87,6 +87,11 @@ const Billing = () => {
   const handleSearch = async (value) => {
     setQuery(value);
 
+    if (!value || value.trim().length === 0) {
+      setItems([]);
+      return;
+    }
+
     try {
       const res = await tokenapi.get(
         `/billing/items/?search=${value}`
@@ -429,8 +434,8 @@ const Billing = () => {
         setShowHoldPanel(false);
         setShowTagCustomer(false);
         setReprint_popup(false);
-       
-  
+
+
       }
 
       if (e.key == 'F2') {
@@ -527,7 +532,7 @@ const Billing = () => {
     const init = async () => {
       try {
         const session_Data = await startsession();
-        
+
         if (!session_Data.session_id) {
           console.log("No session ID received, aborting init");
           return;
@@ -590,7 +595,7 @@ const Billing = () => {
     }
 
   };
-  
+
 
   return (
     <>

@@ -30,8 +30,7 @@ tokenapi.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem("access");
         const shopId = localStorage.getItem("shop_id");
-        console.log("Shop ID in Request Interceptor:", shopId);
-
+        
         if (token) {
             config.headers.Authorization = `Bearer ${token}`;
         }
@@ -40,7 +39,7 @@ tokenapi.interceptors.request.use(
         if (shopId) {
             config.headers["X-SHOP-ID"] = String(shopId);
         }
-        console.log("Request Headers:", config.headers);
+        // console.log("Request Headers:", config.headers);
         return config;
     },
     (error) => Promise.reject(error)
