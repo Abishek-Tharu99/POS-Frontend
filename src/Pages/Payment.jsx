@@ -193,7 +193,7 @@ const Payment = () => {
                 }))
             };
 
-            console.log(billData);
+            //console.log(billData);
 
             // 🔥 API CALL
             const response = await tokenapi.post(
@@ -201,7 +201,7 @@ const Payment = () => {
                 billData
             );
 
-            console.log("Saved:", response.data);
+            //console.log("Saved:", response.data);
 
             const sessionData = JSON.parse(
                 localStorage.getItem("sessionData")

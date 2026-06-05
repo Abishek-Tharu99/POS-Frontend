@@ -516,6 +516,16 @@ const Billing = () => {
 
   const activeShop = JSON.parse(localStorage.getItem("active_shop"));
 
+  const shops = JSON.parse(localStorage.getItem("shops")) || [];
+  const shopName =
+    shops.find(s => s.id === activeShop?.id)?.name ||
+    "Shop Name";
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const Usr = user?.username || "User";
+
+  const isDemoShop = activeShop?.id === 1 && shopName === "Abishek_Innovations";
+
   useEffect(() => {
     const startsession = async () => {
       try {
@@ -532,6 +542,7 @@ const Billing = () => {
     const init = async () => {
       try {
         const session_Data = await startsession();
+
 
         if (!session_Data.session_id) {
           console.log("No session ID received, aborting init");
@@ -600,7 +611,24 @@ const Billing = () => {
   return (
     <>
       <div className='top'>
+        {isDemoShop ? (
+          <>
+            <div style={{ color: "#9C1A1B", fontSize: "30px", fontWeight: "bold" }}>
+              You are in Demo Shop
+            </div>
+            
+            <h2>{Usr}</h2>
+          </>
+        ) : (
+          <>
+            <h2>{shopName}</h2>
+            <h2>{Usr}</h2>
+          </>
+        )}
+
+
         <h2>{billType === "SI" ? "Sales Bill" : "Tax Bill"}</h2>
+
 
       </div>
 

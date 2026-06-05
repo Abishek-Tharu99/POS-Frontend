@@ -9,6 +9,8 @@ import HomePage from './Pages/HomePage'
 import LoginPage from './Pages/LoginPage'
 import { useLocation } from 'react-router-dom'
 import AboutUs from './Pages/AboutUs'
+import Contact from './Pages/Contact'
+import HowToUse from './Pages/HowToUse'
 
 
 const MyRoute = () => {
@@ -17,18 +19,23 @@ const MyRoute = () => {
       <Routes>
         <Route path='/' element={<Base />} >
           <Route index element={<HomePage />} />
-          <Route index element={<AboutUs />} />
+          <Route path="/about" element={<AboutUs />} />
+           <Route path="/contact" element={<Contact />} />
+           <Route path="/how-to-use" element={<HowToUse />} />
         </Route>
+        
         <Route path='/viewdata' element={<ViewData />} />
         <Route path='/end_session' element={<App />} />
         <Route path='/billing' element={<Billing />} />
+
         <Route path="/payment"
           element={<Payment key={location.state?.timestamp} />}
         />
+
         <Route path="/reprint-preview" element={<ReprintPreview />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/about" element={<AboutUs />} />
         
+       
       </Routes>
 
 

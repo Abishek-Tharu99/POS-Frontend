@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import logo from '../assets/Abishek_logo.png'
 import { useNavigate } from "react-router-dom";
 import LoginPage from '../Pages/LoginPage';
@@ -24,10 +24,10 @@ const Header = () => {
             <header className="header bg-info-subtle">
                 <nav className="navbar navbar-expand-lg">
                     <div className="container-fluid">
-                        <Link className="navbar-brand" to={"/"}>
+                        <NavLink className="navbar-brand" to={"/"}>
                             <img src={logo} alt="NexusPOS" className='logo' />
                             <h2>NexusPos</h2>
-                        </Link >
+                        </NavLink>
 
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -35,21 +35,29 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav m-auto mb-2 mb-lg-0">
                                 <li className="nav-item">
-                                    <Link className="nav-link active" aria-current="page" to={"/"}>Home</Link >
+                                    <NavLink end className={({ isActive }) =>
+                                        isActive ? "nav-link active" : "nav-link"
+                                    } to={"/"}>Home</NavLink >
                                 </li>
 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/"}>Service</Link >
+                                    <NavLink className={({ isActive }) =>
+                                        isActive ? "nav-link active" : "nav-link"
+                                    } to={"/how-to-use"}>How to use</NavLink >
                                 </li>
 
 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/"}>Our Team</Link >
+                                    <NavLink className={({ isActive }) =>
+                                        isActive ? "nav-link active" : "nav-link"
+                                    } to={"/contact"}>Contact</NavLink >
                                 </li>
 
 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to={"/about"}>About us</Link >
+                                    <NavLink className={({ isActive }) =>
+                                        isActive ? "nav-link active" : "nav-link"
+                                    } to={"/about"}>About us</NavLink >
                                 </li>
 
 
@@ -69,11 +77,11 @@ const Header = () => {
 
             <LoginPage
                 show={showLogin}
-                onClose={() => {setShowLogin(false)}}
+                onClose={() => { setShowLogin(false) }}
             />
             <SignupPage
                 show={showSignup}
-                onClose={() => {setShowSignup(false)}}
+                onClose={() => { setShowSignup(false) }}
             />
 
 

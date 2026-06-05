@@ -1,6 +1,8 @@
 import React from 'react'
 import logo from '../assets/Abishek_logo.png'
-import { Link } from 'react-router'
+import { Link ,NavLink} from 'react-router'
+import AboutUs from '../Pages/AboutUs';
+
 
 
 
@@ -23,9 +25,12 @@ const Footer = () => {
             <h5>Ouick Links</h5>
             <hr className='line' />
             <ul className=''>
-              <li><Link className='no-underline' to={"/"}>About us</Link></li>
-              <li><Link className='no-underline' to={"/"}>Contact</Link></li>
-              
+              <li><NavLink className={({ isActive }) =>
+                isActive ? "no-underline active" : "no-underline"
+              } to={"/about"}>About us</NavLink></li>
+              <li><NavLink className={({ isActive }) =>
+                isActive ? "no-underline active" : "no-underline"
+              } to={"/contact"}>Contact</NavLink></li>
 
             </ul>
           </div>
