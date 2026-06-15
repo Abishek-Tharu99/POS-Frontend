@@ -270,7 +270,6 @@ const Payment = () => {
     };
 
 
-
     const [showCustomer, setShowCustomer] = useState(false);
     const [customerType, setCustomerType] = useState('NIC');
     const [Forpos, setForpos] = useState(false);
@@ -324,6 +323,7 @@ const Payment = () => {
                 
 
             </div>
+            
             <div className='payment'>
 
                 <div className='payment_method'>

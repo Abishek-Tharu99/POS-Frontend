@@ -645,6 +645,8 @@ const Billing = () => {
           </div>
 
           <div className='display_section'>
+            
+
             <div className='hold_details'>
               {ShowTagCustomer ? (
                 <>
@@ -770,13 +772,9 @@ const Billing = () => {
 
             ) : (
               <div className="recall_placeholder">
-
               </div>
             )
-
             }
-
-
           </div>
         </div>
 

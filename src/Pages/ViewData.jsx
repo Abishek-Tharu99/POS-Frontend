@@ -1,7 +1,10 @@
 import { useState } from 'react'
 import tokenapi from '../api/jwtapi';
+import { useNavigate } from 'react-router-dom';
 
 const ViewData = () => {
+    const navigate = useNavigate();
+
     const sessionData = JSON.parse(localStorage.getItem("sessionData")) || "{}";
     const [username, setUsername] = useState(sessionData.username || "");
 
@@ -94,6 +97,10 @@ const ViewData = () => {
                     </div>
                 )}
 
+            </div>
+
+            <div className='m-3'>
+                <button className='fw-bold fs-5 w-25 border-2 border-primary rounded-2' onClick={()=>navigate("/billing")}>Back</button>
             </div>
         </div>
     )

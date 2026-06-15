@@ -54,9 +54,6 @@ const App = () => {
     }
   };
 
-
-
-
   const [quantity1000, setQuantity1000] = useState(0);
   const [quantity500, setQuantity500] = useState(0);
   const [quantity100, setQuantity100] = useState(0);
@@ -106,26 +103,27 @@ const App = () => {
 
   return (
     <>
-      <main className='end wrap d-flex flex-column flex-lg-row my-3'>
-        <div className='custom-col col-12 '>
+      <main className='end  d-flex flex-column flex-lg-row my-3'>
+
+        <div className='left custom-col col-12 col-lg-3'>
+
           <input type="text" readOnly className='w-auto text-center' value={sessionData.session_id}></input>
-          <div className='d-flex align-items-center gap-2 ms-3 mt-3'>
 
-
+          <div className='d-flex align-items-center  ms-3 mt-3'>
             <h5 className='mb-0'>1000 x</h5>
             <input type="number" className='w-auto' value={quantity1000} onChange={(e) => setQuantity1000(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
             <h5 className='mb-0'>=</h5>
             <input type="number" className='w-auto' readOnly value={result1000}></input>
           </div>
 
-          <div className='d-flex align-items-center gap-2 ms-3 mt-3'>
+          <div className='d-flex align-items-center  ms-3 mt-3'>
             <h5 className='mb-0'>500 x</h5>
             <input type="number" className='w-auto' value={quantity500} onChange={(e) => setQuantity500(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
             <h5 className='mb-0'>=</h5>
             <input type="Number" className='w-auto' readOnly value={result500}></input>
           </div>
 
-          <div className='d-flex align-items-center gap-2 ms-3 mt-3'>
+          <div className='d-flex align-items-center ms-3 mt-3'>
             <h5 className='mb-0'>100 x</h5>
             <input type="number" className='w-auto' value={quantity100} onChange={(e) => setQuantity100(Number(e.target.value === "" ? 0 : Number(e.target.value)))}></input>
             <h5 className='mb-0'>=</h5>
@@ -178,7 +176,7 @@ const App = () => {
         </div>
 
 
-        <div className='custom-col col-12 '>
+        <div className='middle custom-col col-12 col-lg-3'>
 
           <div className='d-flex align-items-center'>
 
@@ -301,7 +299,7 @@ const App = () => {
 
         </div>
 
-        <div className='custom-col col-12 '>
+        <div className='right custom-col col-12 col-lg-3'>
           <div className='d-flex align-items-center'>
             <h3>Deposited in Bank</h3>
             <div className='m-3'>
@@ -320,6 +318,7 @@ const App = () => {
             <button disabled={!value_ts} className='m-auto align-items-center btn border border-3 border-primary bg-primary-subtle' onClick={saveBill}>Save Data</button>
 
             <button
+            className='border-4 border-primary rounded-4'
               onClick={() => {
                 setManualCashSales(false);
                 setCashSales(value_ts - value_pos - value_fp - value_cr);
@@ -329,6 +328,8 @@ const App = () => {
             </button>
 
             <Link className='viewdata fs-4 m-auto align-items-center border border-3 border-primary rounded-3 bg-primary-subtle border-3 me-3' to={'/viewdata'}>View Data</Link>
+             <Link className='viewdata fs-4 m-auto align-items-center border border-3 border-primary rounded-3 bg-primary-subtle border-3 me-3' to={'/billing'}>Back</Link>
+
 
             {/* <input type="date" onChange={(e) => setSearchDate(e.target.value)} />
             <button className='m-auto align-items-center btn btn-2 border border-3 border-primary bg-primary-subtle' onClick={getBill}>View Data</button> */}

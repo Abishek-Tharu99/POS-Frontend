@@ -53,56 +53,57 @@ const LoginPage = ({
     const handleSubmit = async (e) => {
 
         e.preventDefault();
+        if (!validateForm()) return;
 
         setLoading(true);
-        if (validateForm()) {
-
-            try {
-
-                const response = await api.post("/users/login/", {
-                    username: formData.username,
-                    password: formData.password,
-                });
-                console.log("Login Response:", response.data);
-                // ⚠️ Check before storing
-                if (response.data.user) {
-                    localStorage.setItem("user", JSON.stringify(response.data.user));
-                }
-
-                // localStorage.setItem("user", JSON.stringify(response.data.user));
-                localStorage.setItem("access", response.data.access);
-                localStorage.setItem("refresh", response.data.refresh);
-                localStorage.setItem("shops", JSON.stringify(response.data.shops || []));
-                
-                
-
-                if (response.data.active_shop) {
-                    localStorage.setItem("active_shop", JSON.stringify(response.data.active_shop));
-                    localStorage.setItem("shop_id",response.data.active_shop.id);
-                }
-                
-
-                setFormData({
-                    username: '',
-                    password: '',
-                });
-                setErrors({});
 
 
+        try {
 
-                onClose();
-                navigate("/billing");
-
-            } catch (error) {
-
-                alert(
-                    error.response?.data?.message ||
-                    "Server Error"
-                );
-            }finally {
-                setLoading(false);  
+            const response = await api.post("/users/login/", {
+                username: formData.username,
+                password: formData.password,
+            });
+            console.log("Login Response:", response.data);
+            // ⚠️ Check before storing
+            if (response.data.user) {
+                localStorage.setItem("user", JSON.stringify(response.data.user));
             }
-        };
+
+            // localStorage.setItem("user", JSON.stringify(response.data.user));
+            localStorage.setItem("access", response.data.access);
+            localStorage.setItem("refresh", response.data.refresh);
+            localStorage.setItem("shops", JSON.stringify(response.data.shops || []));
+
+
+
+            if (response.data.active_shop) {
+                localStorage.setItem("active_shop", JSON.stringify(response.data.active_shop));
+                localStorage.setItem("shop_id", response.data.active_shop.id);
+            }
+
+
+            setFormData({
+                username: '',
+                password: '',
+            });
+            setErrors({});
+
+
+
+            onClose();
+            navigate("/billing");
+
+        } catch (error) {
+
+            alert(
+                error.response?.data?.message ||
+                "Server Error"
+            );
+        } finally {
+            setLoading(false);
+        }
+
     };
     return (
         <>
