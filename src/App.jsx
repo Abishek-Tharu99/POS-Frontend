@@ -253,7 +253,7 @@ const App = () => {
               <input type='number'
                 value={value_ts}
                 //</div>onChange={(e) => setValue_ts(Number(e.target.value === "" ? 0 : Number(e.target.value)))}
-                readOnly
+                onChange={(e) => setValue_ts(Number(e.target.value || 0))}
               ></input>
             </div>
 
